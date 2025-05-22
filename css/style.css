@@ -72,6 +72,38 @@ main.container {
   background: linear-gradient(135deg, #e0f7fa 0%, #b3e0ff 100%);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 153, 204, 0.07);
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+}
+
+.sticky-top h4 {
+  margin-bottom: 1.5rem;
+  color: #0077be;
+  font-weight: 600;
+}
+
+.sticky-top .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sticky-top .nav-link {
+  color: #03396c !important;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+  background: transparent;
+  display: block;
+}
+
+.sticky-top .nav-link:hover {
+  background: #b3e0ff;
+  color: #0077be !important;
 }
 
 ::-webkit-scrollbar {
@@ -166,4 +198,18 @@ header.bg-success::after {
 
 #carouselExampleIndicators {
   margin-bottom: 3rem;
+}
+
+/* Додаємо підтримку для .collapse, щоб списки були видимі */
+.collapse {
+  display: block !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+/* Якщо потрібно приховати, додайте клас .collapsed вручну */
+.collapsed {
+  display: none !important;
 }
