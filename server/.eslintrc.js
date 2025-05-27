@@ -3,8 +3,11 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     // Шляхи до конфігураційних файлів TypeScript
-    project: ['tsconfig.json', 'tests/tsconfig.json'],
-    // Тип модулів у коді
+    project: [
+      './tsconfig.json',
+      './tests/tsconfig.json'
+    ],
+    tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
   // Плагіни, які використовуються

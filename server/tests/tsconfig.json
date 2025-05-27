@@ -1,8 +1,7 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../../tsconfig.json",
+  "include": ["../src/**/*", "**/*"],
   "compilerOptions": {
-    "types": ["node", "mocha", "chai"]
-  },
-  "include": ["./**/*.ts"],
-  "exclude": ["../node_modules", "../dist"]
+    "rootDir": "../"
+  }
 }
