@@ -4,7 +4,7 @@ import { Manatee, IManatee } from '../models/rabbit';
 // Клас-репозиторій для роботи з ламантинами
 // Анотація injectable дозволяє впровадити цей репозиторій через IoC контейнер
 @injectable()
-export class ManateeRepository {
+class ManateeRepository {
     // Метод для отримання всіх ламантинів з бази даних
     public async findAll(): Promise<IManatee[]> {
         return Manatee.find();
@@ -37,3 +37,5 @@ export class ManateeRepository {
         return Manatee.findByIdAndUpdate(id, { $set: manateeData }, { new: true });
     }
 }
+
+export { ManateeRepository };

@@ -175,6 +175,7 @@ describe('API вебдодатку сайту про ламантинів', () =
                 weight: 2.5,
                 gender: 'female',
                 description: 'Оновлений опис',
+                waterTemperature: 22, // нове поле
             };
 
             // Виконуємо PUT-запит для повного оновлення запису про ламантина
@@ -214,6 +215,7 @@ describe('API вебдодатку сайту про ламантинів', () =
                 // height і weight відсутні
                 gender: 'female',
                 description: 'Оновлений опис',
+                waterTemperature: 20, // додано для консистентності
             };
 
             // Виконуємо PUT-запит з неповними даними
@@ -252,6 +254,7 @@ describe('API вебдодатку сайту про ламантинів', () =
                 name: 'Частково оновлений',
                 age: 3,
                 description: 'Оновлений опис',
+                waterTemperature: 25, // нове поле
             };
 
             // Виконуємо PATCH-запит
@@ -291,6 +294,7 @@ describe('API вебдодатку сайту про ламантинів', () =
                 // height і weight навмисно відсутні
                 gender: 'female',
                 description: 'Оновлений опис',
+                waterTemperature: 18, // нове поле
             };
 
             // Виконуємо PATCH-запит

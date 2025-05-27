@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { container } from '../config/container';
-import { ManateeRepository } from '../repositories/RabbitRepository';
+import { ManateeRepository } from '../repositories/ManateeRepository';
 
 // Створюємо новий обробник HTTP-запитів Express
 const router = Router();

@@ -59,8 +59,6 @@
     // Помилка при відсутності break в case блоках
     "noFallthroughCasesInSwitch": true
   },
-  // Які файли включати в компіляцію
   "include": ["src/**/*.ts", "tests/**/*.ts"],
-  // Які файли виключати з компіляції
   "exclude": ["node_modules", "dist"]
 }
