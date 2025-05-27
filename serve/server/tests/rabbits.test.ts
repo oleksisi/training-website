@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import * as chai from 'chai';
 import chaiHttp from 'chai-http';
 import mongoose from 'mongoose';
+
+// Перевірте, що ці файли існують за вказаними шляхами:
 import app from '../src/server';
 import { Manatee } from '../src/models/manatee';
 import { container } from '../src/config/container';
