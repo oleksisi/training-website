@@ -1,39 +1,39 @@
 import { injectable } from 'inversify';
-import { Rabbit, IRabbit } from '../models/rabbit';
+import { Manatee, IManatee } from '../models/rabbit';
 
-// Клас-репозиторій для роботи з зайцями
+// Клас-репозиторій для роботи з ламантинами
 // Анотація injectable дозволяє впровадити цей репозиторій через IoC контейнер
 @injectable()
-export class RabbitRepository {
-    // Метод для отримання всіх зайців з бази даних
-    public async findAll(): Promise<IRabbit[]> {
-        return Rabbit.find();
+export class ManateeRepository {
+    // Метод для отримання всіх ламантинів з бази даних
+    public async findAll(): Promise<IManatee[]> {
+        return Manatee.find();
     }
 
-    // Метод для пошуку зайця за унікальним ідентифікатором
-    public async findById(id: string): Promise<IRabbit | null> {
-        return Rabbit.findById(id);
+    // Метод для пошуку ламантина за унікальним ідентифікатором
+    public async findById(id: string): Promise<IManatee | null> {
+        return Manatee.findById(id);
     }
 
-    // Метод для створення нового зайця в базі даних
-    public async create(rabbitData: IRabbit): Promise<IRabbit> {
-        const rabbit = new Rabbit(rabbitData);
-        return rabbit.save();
+    // Метод для створення нового ламантина в базі даних
+    public async create(manateeData: IManatee): Promise<IManatee> {
+        const manatee = new Manatee(manateeData);
+        return manatee.save();
     }
 
-    // Метод для видалення зайця за ідентифікатором
+    // Метод для видалення ламантина за ідентифікатором
     public async delete(id: string): Promise<boolean> {
-        const result = await Rabbit.findByIdAndDelete(id);
+        const result = await Manatee.findByIdAndDelete(id);
         return result !== null;
     }
 
-    // Метод для повного оновлення даних про зайця (заміна всіх полів)
-    public async update(id: string, rabbitData: IRabbit): Promise<IRabbit | null> {
-        return Rabbit.findByIdAndUpdate(id, rabbitData, { new: true });
+    // Метод для повного оновлення даних про ламантина (заміна всіх полів)
+    public async update(id: string, manateeData: IManatee): Promise<IManatee | null> {
+        return Manatee.findByIdAndUpdate(id, manateeData, { new: true });
     }
 
-    // Метод для часткового оновлення даних про зайця (оновлення лише вказаних полів)
-    public async patch(id: string, rabbitData: Partial<IRabbit>): Promise<IRabbit | null> {
-        return Rabbit.findByIdAndUpdate(id, { $set: rabbitData }, { new: true });
+    // Метод для часткового оновлення даних про ламантина (оновлення лише вказаних полів)
+    public async patch(id: string, manateeData: Partial<IManatee>): Promise<IManatee | null> {
+        return Manatee.findByIdAndUpdate(id, { $set: manateeData }, { new: true });
     }
 }
