@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { Manatee, IManatee } from '../models/rabbit';
+import { Manatee, IManatee } from '../models/manatee';
 
 // Клас-репозиторій для роботи з ламантинами
 // Анотація injectable дозволяє впровадити цей репозиторій через IoC контейнер

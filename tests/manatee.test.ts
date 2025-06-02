@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../src/server';
-import { Manatee as Rabbit } from '../src/models/rabbit';
+import { Manatee as Rabbit } from '../src/models/manatee';
 import { container } from '../src/config/container';
 import { TYPES } from '../src/types/types';
 import { IDatabase } from '../src/interfaces/IDatabase';
@@ -59,7 +59,7 @@ describe('API вебдодатку сайту про ламантинів', () =
     });
 
     // Тести для створення запису про нового ламантина (POST-запит)
-    describe('POST /api/rabbits', () => {
+    describe('POST /api/manatees', () => {
         it('має створити запис про нового ламантина', done => {
             // Тестові дані ламантина
             const manatee = {
@@ -73,7 +73,7 @@ describe('API вебдодатку сайту про ламантинів', () =
 
             // Виконуємо POST-запит для створення запису про ламантина
             chai.request(app)
-                .post('/api/rabbits')
+                .post('/api/manatees')
                 .send(manatee)
                 .end((err, res) => {
                     if (err !== null && err !== undefined) {
@@ -95,7 +95,7 @@ describe('API вебдодатку сайту про ламантинів', () =
     });
 
     // Тести для отримання всіх записів ламантинів (GET-запит)
-    describe('GET /api/rabbits', () => {
+    describe('GET /api/manatees', () => {
         it('має отримати всіх ламантинів', async () => {
             // Створюємо тестовий запис ламантина
             const testManatee = new Rabbit({
@@ -109,7 +109,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             await testManatee.save();
 
             // Виконуємо GET-запит для отримання всіх записів ламантинів
-            const res = await chai.request(app).get('/api/rabbits');
+            const res = await chai.request(app).get('/api/manatees');
             expect(res).to.have.status(200);
             expect(res.body).to.be.an('array');
             expect(res.body.length).to.equal(1);
@@ -122,7 +122,7 @@ describe('API вебдодатку сайту про ламантинів', () =
     });
 
     // Тести для отримання запису конкретного ламантина за ID (GET-запит)
-    describe('GET /api/rabbits/:id', () => {
+    describe('GET /api/manatees/:id', () => {
         it('має отримати конкретного ламантина за id', async () => {
             // Створюємо запис тестового ламантина
             const testManatee = new Rabbit({
@@ -136,7 +136,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             const savedManatee = await testManatee.save();
 
             // Виконуємо GET-запит для отримання запису ламантина за ID
-            const res = await chai.request(app).get(`/api/rabbits/${String(savedManatee._id)}`);
+            const res = await chai.request(app).get(`/api/manatees/${String(savedManatee._id)}`);
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('name', 'Косий');
             expect(res.body).to.have.property('age', 1);
@@ -148,13 +148,13 @@ describe('API вебдодатку сайту про ламантинів', () =
 
         it('має повернути 404 для неіснуючого ламантина', async () => {
             // Виконуємо GET-запит для неіснуючого ID ламантина
-            const res = await chai.request(app).get('/api/rabbits/654321654321654321654321');
+            const res = await chai.request(app).get('/api/manatees/654321654321654321654321');
             expect(res).to.have.status(404);
         });
     });
 
     // Тести для повного оновлення запису про ламантина (PUT-запит)
-    describe('PUT /api/rabbits/:id', () => {
+    describe('PUT /api/manatees/:id', () => {
         it('має повністю оновити запис про ламантина', async () => {
             // Створюємо тестового ламантина
             const testManatee = new Rabbit({
@@ -181,7 +181,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             // Виконуємо PUT-запит для повного оновлення запису про ламантина
             const res = await chai
                 .request(app)
-                .put(`/api/rabbits/${String(savedManatee._id)}`)
+                .put(`/api/manatees/${String(savedManatee._id)}`)
                 .send(updatedData);
 
             // Перевіряємо результат
@@ -221,7 +221,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             // Виконуємо PUT-запит з неповними даними
             const res = await chai
                 .request(app)
-                .put(`/api/rabbits/${String(savedManatee._id)}`)
+                .put(`/api/manatees/${String(savedManatee._id)}`)
                 .send(incompleteData);
 
             // Перевіряємо, що запит завершився з помилкою
@@ -236,7 +236,7 @@ describe('API вебдодатку сайту про ламантинів', () =
     });
 
     // Тести для часткового оновлення запису про ламантина (PATCH-запит)
-    describe('PATCH /api/rabbits/:id', () => {
+    describe('PATCH /api/manatees/:id', () => {
         it('має частково оновити запис про ламантина', async () => {
             // Створюємо тестового ламантина
             const testManatee = new Rabbit({
@@ -260,7 +260,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             // Виконуємо PATCH-запит
             const res = await chai
                 .request(app)
-                .patch(`/api/rabbits/${String(savedManatee._id)}`)
+                .patch(`/api/manatees/${String(savedManatee._id)}`)
                 .send(patchData);
 
             // Перевіряємо результат
@@ -300,7 +300,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             // Виконуємо PATCH-запит
             const res = await chai
                 .request(app)
-                .patch(`/api/rabbits/${String(savedManatee._id)}`)
+                .patch(`/api/manatees/${String(savedManatee._id)}`)
                 .send(partialData);
 
             // Перевіряємо результат
@@ -316,12 +316,12 @@ describe('API вебдодатку сайту про ламантинів', () =
     });
 
     // Тести для отримання метаданих (HEAD-запит)
-    describe('HEAD /api/rabbits', () => {
+    describe('HEAD /api/manatees', () => {
         it('має повернути заголовки метаданих', async () => {
             // Виконуємо HEAD-запит
             const res = await chai
                 .request(app)
-                .head('/api/rabbits')
+                .head('/api/manatees')
                 .set('Accept', 'application/json');
 
             // Перевіряємо статус відповіді
@@ -342,7 +342,7 @@ describe('API вебдодатку сайту про ламантинів', () =
     });
 
     // Тести для видалення запису ламантина (DELETE-запит)
-    describe('DELETE /api/rabbits/:id', () => {
+    describe('DELETE /api/manatees/:id', () => {
         it('має видалити запис про ламантина', async () => {
             // Створюємо тестового ламантина
             const testManatee = new Rabbit({
@@ -356,7 +356,7 @@ describe('API вебдодатку сайту про ламантинів', () =
             const savedManatee = await testManatee.save();
 
             // Виконуємо DELETE-запит
-            const res = await chai.request(app).delete(`/api/rabbits/${String(savedManatee._id)}`);
+            const res = await chai.request(app).delete(`/api/manatees/${String(savedManatee._id)}`);
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('message', 'Запис про ламантина видалено');
 
